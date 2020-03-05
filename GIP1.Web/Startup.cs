@@ -16,7 +16,6 @@ namespace GIP1.Web
         {
             Configuration = configuration;
         }
-        //yeet
 
         public IConfiguration Configuration { get; }
 
