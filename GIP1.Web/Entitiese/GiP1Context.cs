@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 namespace GIP1.Web.Entitiese
 {
     public partial class GiP1Context : DbContext
-    {//yeet
+    {
         public GiP1Context()
         {
         }
@@ -13,7 +13,7 @@ namespace GIP1.Web.Entitiese
         public GiP1Context(DbContextOptions<GiP1Context> options)
             : base(options)
         {
-        }//yeet
+        }
 
         public virtual DbSet<Lokaal> Lokaal { get; set; }
 
@@ -41,7 +41,7 @@ namespace GIP1.Web.Entitiese
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
-                //huts
+                
                 
                 entity.Property(e => e.Opmerking)
                     .HasMaxLength(50)
