@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace GIP1.Web
 {
-    public class Startup//uts
+    public class Startup//utsgdg
     {
         public Startup(IConfiguration configuration)
         {
