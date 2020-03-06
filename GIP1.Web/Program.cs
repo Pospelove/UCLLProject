@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GIP1.Web
 {
-    public class Program
+    public class Program//test
     {
         public static void Main(string[] args)
         {
