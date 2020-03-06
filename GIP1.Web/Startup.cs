@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace GIP1.Web
 {
-    public class Startup
+    public class Startup//Test voor sync
     {
         public Startup(IConfiguration configuration)
         {
