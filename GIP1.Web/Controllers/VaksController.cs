@@ -9,22 +9,22 @@ using GIP1.Web.Entities;
 
 namespace GIP1.Web.Controllers
 {
-    public class LokaalsController : Controller
+    public class VaksController : Controller
     {
         private readonly GiP1Context _context;
 
-        public LokaalsController(GiP1Context context)
+        public VaksController(GiP1Context context)
         {
             _context = context;
         }
 
-        // GET: Lokaals
+        // GET: Vaks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Lokaal.ToListAsync());
+            return View(await _context.Vak.ToListAsync());
         }
 
-        // GET: Lokaals/Details/5
+        // GET: Vaks/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace GIP1.Web.Controllers
                 return NotFound();
             }
 
-            var lokaal = await _context.Lokaal
+            var vak = await _context.Vak
                 .FirstOrDefaultAsync(m => m.Code == id);
-            if (lokaal == null)
+            if (vak == null)
             {
                 return NotFound();
             }
 
-            return View(lokaal);
+            return View(vak);
         }
 
-        // GET: Lokaals/Create
+        // GET: Vaks/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Lokaals/Create
+        // POST: Vaks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Code,Locatie,Opmerking")] Lokaal lokaal)
+        public async Task<IActionResult> Create([Bind("Code,Titel,Studiepunten")] Vak vak)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(lokaal);
+                _context.Add(vak);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(lokaal);
+            return View(vak);
         }
 
-        // GET: Lokaals/Edit/5
+        // GET: Vaks/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace GIP1.Web.Controllers
                 return NotFound();
             }
 
-            var lokaal = await _context.Lokaal.FindAsync(id);
-            if (lokaal == null)
+            var vak = await _context.Vak.FindAsync(id);
+            if (vak == null)
             {
                 return NotFound();
             }
-            return View(lokaal);
+            return View(vak);
         }
 
-        // POST: Lokaals/Edit/5
+        // POST: Vaks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Code,Locatie,Opmerking")] Lokaal lokaal)
+        public async Task<IActionResult> Edit(string id, [Bind("Code,Titel,Studiepunten")] Vak vak)
         {
-            if (id != lokaal.Code)
+            if (id != vak.Code)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace GIP1.Web.Controllers
             {
                 try
                 {
-                    _context.Update(lokaal);
+                    _context.Update(vak);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LokaalExists(lokaal.Code))
+                    if (!VakExists(vak.Code))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace GIP1.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(lokaal);
+            return View(vak);
         }
 
-        // GET: Lokaals/Delete/5
+        // GET: Vaks/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace GIP1.Web.Controllers
                 return NotFound();
             }
 
-            var lokaal = await _context.Lokaal
+            var vak = await _context.Vak
                 .FirstOrDefaultAsync(m => m.Code == id);
-            if (lokaal == null)
+            if (vak == null)
             {
                 return NotFound();
             }
 
-            return View(lokaal);
+            return View(vak);
         }
 
-        // POST: Lokaals/Delete/5
+        // POST: Vaks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var lokaal = await _context.Lokaal.FindAsync(id);
-            _context.Lokaal.Remove(lokaal);
+            var vak = await _context.Vak.FindAsync(id);
+            _context.Vak.Remove(vak);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LokaalExists(string id)
+        private bool VakExists(string id)
         {
-            return _context.Lokaal.Any(e => e.Code == id);
+            return _context.Vak.Any(e => e.Code == id);
         }
     }
 }

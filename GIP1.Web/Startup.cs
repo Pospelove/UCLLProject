@@ -23,7 +23,7 @@ namespace GIP1.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<GIP1.Web.Entitiese.GiP1Context>(ServiceLifetime.Scoped);
+            services.AddDbContext<GIP1.Web.Entities.GiP1Context>(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
