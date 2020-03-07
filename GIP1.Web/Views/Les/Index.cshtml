@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GIP1.Web.Entities.Les>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesnaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LokaalcodeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanningcodeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VakcodeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lesnaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LokaalcodeNavigation.Lokaalcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlanningcodeNavigation.Planningcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VakcodeNavigation.Vakcode)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LesId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LesId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LesId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

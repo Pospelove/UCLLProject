@@ -33,7 +33,7 @@ namespace GIP1.Web.Controllers
             }
 
             var vak = await _context.Vak
-                .FirstOrDefaultAsync(m => m.Code == id);
+                .FirstOrDefaultAsync(m => m.Vakcode == id);
             if (vak == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace GIP1.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Code,Titel,Studiepunten")] Vak vak)
+        public async Task<IActionResult> Create([Bind("Vakcode,Vaknaam,Studiepunten")] Vak vak)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace GIP1.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Code,Titel,Studiepunten")] Vak vak)
+        public async Task<IActionResult> Edit(string id, [Bind("Vakcode,Vaknaam,Studiepunten")] Vak vak)
         {
-            if (id != vak.Code)
+            if (id != vak.Vakcode)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace GIP1.Web.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VakExists(vak.Code))
+                    if (!VakExists(vak.Vakcode))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace GIP1.Web.Controllers
             }
 
             var vak = await _context.Vak
-                .FirstOrDefaultAsync(m => m.Code == id);
+                .FirstOrDefaultAsync(m => m.Vakcode == id);
             if (vak == null)
             {
                 return NotFound();
@@ -146,7 +146,7 @@ namespace GIP1.Web.Controllers
 
         private bool VakExists(string id)
         {
-            return _context.Vak.Any(e => e.Code == id);
+            return _context.Vak.Any(e => e.Vakcode == id);
         }
     }
 }
