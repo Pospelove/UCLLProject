@@ -3,16 +3,15 @@ using System.Collections.Generic;
 
 namespace GIP1.Web.Entities
 {
-    public partial class Vak
+    public partial class Planning
     {
-        public Vak()
+        public Planning()
         {
             Les = new HashSet<Les>();
         }
 
-        public string Vakcode { get; set; }
-        public string Vaknaam { get; set; }
-        public int? Studiepunten { get; set; }
+        public string Planningcode { get; set; }
+        public DateTime? Datumtijd { get; set; }
 
         public virtual ICollection<Les> Les { get; set; }
     }
