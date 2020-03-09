@@ -148,5 +148,24 @@ namespace GIP1.Web.Controllers
         {
             return _context.Planning.Any(e => e.Planningcode == id);
         }
+
+        public async Task<IActionResult> AddVak(string id, int lesId)
+        {
+            var result = await _context.Planning.SingleOrDefaultAsync(b => b.Planningcode == id);
+            if (result != null)
+            {
+                var les = await _context.Les.SingleOrDefaultAsync(b => b.LesId == lesId);
+                if (les != null)
+                {
+                    result.Les.Add(new Les());
+                    await _context.SaveChangesAsync();
+                }
+                else
+                    return NotFound();
+            }
+            else
+                return NotFound();
+            return View(result);
+        }
     }
 }
